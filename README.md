@@ -1,8 +1,8 @@
 # Machine Learning Course
 
-Provider: Alfatraining, Germany
-Duration: 4 Weeks
-Start Date: November 11, 2024
+Provider: Alfatraining, Germany  
+Duration: 4 Weeks  
+Start Date: November 11, 2024  
 
 ## Course Content
 
@@ -29,10 +29,10 @@ Start Date: November 11, 2024
 
 ## Schedule
 
-Monday to Friday
-8:30 – 10:00: Lectures and Introductions
-10:15 – 11:45: Topic Deep Dive
-12:35 – 13:15: Lunch Break
-13:15 – 14:45: Hands-on Exercises
-14:50 – 15:35: Practical Applications / Project Work
-Extended hours during holidays
+Monday to Friday  
+8:30 – 10:00: Lectures and Introductions  
+10:15 – 11:45: Topic Deep Dive  
+12:35 – 13:15: Lunch Break  
+13:15 – 14:45: Hands-on Exercises  
+14:50 – 15:35: Practical Applications / Project Work  
+Extended hours during holidays  
