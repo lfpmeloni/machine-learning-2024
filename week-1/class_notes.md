@@ -105,7 +105,7 @@ A histogram is a graphical representation that organizes a group of data points 
 
 Scatter plots off the diagonal display the relationships between pairs of variables. If the points in a scatter plot show an upward or downward trend, it indicates a positive or negative correlation, respectively. Plots with no discernible pattern suggest little to no correlation.
 
-#### Justify the selection of columns underlying the scatter matrix.
+#### Justify the selection of columns underlying the scatter matrix
 
 The columns selected for the scatter matrix are chosen based on their potential impact on the target variable (`median_house_value`). Features that are likely to influence house prices, such as `median_income`, `total_rooms`, and `housing_median_age`, are included to visualize their relationships with the target and among themselves. They were shosing for having the greatest correlation.
 
