@@ -120,3 +120,77 @@ It is particularly evident that there is a strong positive correlation between `
 - [Pandas Scatter Matrix Documentation](https://pandas.pydata.org/docs/reference/api/pandas.plotting.scatter_matrix.html)
 - [Understanding Correlation Coefficients](https://statisticsbyjim.com/basics/correlation-coefficient/)
 - [Data Visualization with Matplotlib](https://matplotlib.org/stable/gallery/index.html)
+
+## Day 3
+
+Experimenting and understanding concepts with the Beispielprojekt_Teil1b.ipynb
+
+### Understanding concepts in Pandas
+
+Experimenting and understanding concepts with the pandas_erklärungen.ipynb
+
+#### `iloc`
+
+In Pandas, iloc is a powerful indexing and selection tool that allows you to access rows and columns in a DataFrame by their integer positions. The name iloc stands for integer location.
+
+It is primarily used for integer-based indexing to select data by row and column numbers.
+
+                df.iloc[<row_selection>, <column_selection>]
+
+#### `random.permutation`
+
+numpy.random.permutation is a function in NumPy that randomly permutes the elements of an array or generates a permuted sequence of integers.
+
+        Original array: [1 2 3 4 5]
+        Shuffled array: [3 1 5 2 4]
+
+#### Stratification in Statistics
+
+Stratification is a sampling technique used in statistics to divide a population into distinct subgroups, known as strata, that are homogeneous in certain characteristics. This method ensures that each subgroup is adequately represented in the overall sample, enhancing the accuracy and reliability of statistical estimates.
+
+1. Identify Strata: Determine the relevant characteristics (e.g., age, gender, income) to divide the population into strata.
+2. Divide the Population: Split the entire population into these non-overlapping strata based on the chosen characteristics.
+3. Sample Within Strata: Perform random sampling within each stratum. The number of samples from each stratum can be proportional to its size in the population or based on other criteria.
+
+#### `drop`
+
+This line of code removes the column named "income_cat" from the DataFrame set1. Here's a breakdown of what each part does:
+
+set1: The original Pandas DataFrame from which you want to remove a column.
+.drop("income_cat", axis=1, inplace=True):
+"income_cat": The name of the column you want to delete.
+axis=1: Specifies that you're dropping a column. (Use axis=0 to drop rows.)
+inplace=True: Modifies the original DataFrame set1 directly without creating a new DataFrame.
+
+#### `from sklearn.impute import SimpleImputer`
+
+The code imports the SimpleImputer, creates an imputer that fills in missing data using the median of each column, and displays the imputer's configuration.
+
+Strategy Options: Besides "median", SimpleImputer can use other strategies like "mean", "most_frequent", or "constant".
+
+Fit and Transform: fit() calculates the required statistics (e.g., median), and transform() applies them to replace missing values.
+
+#### ``fit()`` Function in SimpleImputer
+
+The ``fit()`` function in SimpleImputer is used to compute the necessary statistics for imputing missing values based on the chosen strategy. When you call ``fit()`` on your dataset, the imputer calculates values like the median, mean, or most frequent value for each column, depending on the specified strategy. These computed statistics are then stored within the imputer instance and are essential for accurately replacing the missing data during the transformation phase. Essentially, ``fit()`` learns the parameters needed to handle missing values from the training data.
+
+#### ``transform()`` Function in SimpleImputer
+
+The ``transform()`` function applies the imputation strategy to the dataset using the statistics calculated during the ``fit()`` step. When you invoke ``transform()``, the imputer replaces all identified missing values in the dataset with the corresponding median, mean, most frequent value, or a constant, as defined by the strategy parameter. This function returns a new dataset where the missing values have been filled in, ensuring that the data is complete and ready for further analysis or modeling. In summary, ``transform()`` utilizes the learned statistics to effectively handle and replace missing data points in your dataset.
+
+#### Training and Test separation
+
+Usaually it is devided 80:20 (Pareto) train to test reatio but it deppends on your data set and conditions.
+
+What label mean on this context? A label is the target variable or the outcome that the model is designed to predict. It represents the information you want the model to learn from the data.
+
+Labels are essential for supervised learning tasks as they provide the ground truth the model aims to predict.
+
+During train-test separation, both the training and test sets include labels to facilitate learning and evaluation.
+
+Ensuring that labels are correctly assigned and consistently used across both sets is vital for building effective and reliable machine learning models.
+
+Examples:
+
+- Classification Task: In an email spam filter, the label could be spam or not spam.
+- Regression Task: In predicting house prices, the label would be the actual price of the house.
