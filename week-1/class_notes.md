@@ -194,3 +194,160 @@ Examples:
 
 - Classification Task: In an email spam filter, the label could be spam or not spam.
 - Regression Task: In predicting house prices, the label would be the actual price of the house.
+
+## Day 4
+
+### Continue of machine training
+
+beispielprojekt_teil2.ipynb
+
+### ``OrdinalEncoder`` in scikit-learn
+
+The ``OrdinalEncoder`` from ``sklearn.preprocessing`` is a tool used to convert categorical features into ordinal integers. This is particularly useful for machine learning algorithms that require numerical input. Unlike one-hot encoding, which creates binary columns for each category, ordinal encoding assigns each unique category a distinct integer based on alphabetical ordering or a specified mapping.
+
+#### ``fit()`` Function
+
+The ``fit()`` function in ``OrdinalEncoder`` analyzes the input data to identify all unique categories in each categorical feature. It learns the mapping of each category to an integer based on the specified encoding strategy. During this process, ``fit()`` stores the unique categories and their corresponding integer values within the encoder instance, preparing it for the transformation of the dataset. Essentially, ``fit()`` teaches the encoder how to translate categorical data into numerical form.
+
+#### ``transform()`` Function
+
+The ``transform()`` function applies the learned category-to-integer mappings to the dataset. When you call ``transform()``, the OrdinalEncoder replaces each categorical value in the dataset with its corresponding integer as determined during the fit() step. This results in a numerical representation of the original categorical features, making the data suitable for input into machine learning models. The ``transform()`` function ensures that the categorical data is consistently and accurately encoded based on the previously learned mappings.
+
+#### ``fit_transform()`` Function
+
+The ``fit_transform()`` function is a convenient method that combines the actions of ``fit()`` and ``transform()`` into a single step. When you use ``fit_transform()``, the OrdinalEncoder first learns the category mappings from the data and then immediately applies these mappings to transform the dataset. This is particularly useful for streamlining the preprocessing workflow, allowing you to efficiently encode categorical features without having to call ``fit()`` and ``transform()`` separately.
+
+### `OneHotEncoder` in scikit-learn
+
+The OneHotEncoder from sklearn.preprocessing is a preprocessing tool used to convert categorical features into a binary (0 or 1) representation. Unlike OrdinalEncoder, which assigns a unique integer to each category, OneHotEncoder creates separate binary columns for each unique category within a feature. This encoding method is essential for machine learning algorithms that cannot work with categorical data directly and helps prevent the algorithm from assuming any ordinal relationship between categories.
+
+#### `fit()` Function
+
+The fit() function in OneHotEncoder analyzes the input data to identify all unique categories in each categorical feature. During this process, it determines the necessary binary columns needed to represent each category uniquely. The fit() method stores the unique categories and their corresponding binary encodings within the encoder instance, preparing it for transforming the dataset. Essentially, fit() learns the structure of the categorical data to ensure accurate and consistent encoding during transformation.
+
+#### `transform()` Function
+
+The transform() function applies the learned binary mappings to the dataset. When you call transform(), the OneHotEncoder converts each categorical value into a binary vector where only the corresponding category's column is marked as 1, and all others are 0. This results in a sparse matrix where categorical features are represented in a format suitable for machine learning models. The transform() function ensures that the categorical data is accurately encoded based on the mappings established during the fit() step.
+
+#### `fit_transform()` Function
+
+The fit_transform() function combines the actions of fit() and transform() into a single step. By using fit_transform(), the OneHotEncoder first learns the category mappings from the data and then immediately applies these mappings to transform the dataset. This method is particularly useful for streamlining the preprocessing workflow, allowing for efficient encoding of categorical features without needing to call fit() and transform() separately. It simplifies the code and enhances computational efficiency during the encoding process.
+
+#### Difference Between OneHotEncoder and OrdinalEncoder
+
+OrdinalEncoder assigns a unique integer to each category, introducing an implicit ordinal relationship between categories. In contrast, OneHotEncoder creates separate binary columns for each category, eliminating any implied order. This fundamental difference affects how machine learning models interpret the encoded data.
+
+#### Advantages of OneHotEncoder
+
+- No Ordinal Assumption: Prevents algorithms from assuming a natural order among categories, which is beneficial for nominal data.
+- Model Compatibility: Essential for algorithms that require numerical input without ordinal relationships, such as linear regression and neural networks.
+- Improved Performance: Can lead to better model performance by providing a clear and distinct representation of categories.
+
+#### Disadvantages of OneHotEncoder
+
+- Increased Dimensionality: Can significantly increase the number of features, especially with high-cardinality categorical variables, leading to the "curse of dimensionality."
+- Sparse Representation: Results in a sparse matrix, which can be less efficient in terms of memory and computation for very large datasets.
+- Potential Overfitting: More features can sometimes lead to overfitting, especially with limited data.
+
+#### Advantages of OrdinalEncoder
+
+- Simplicity: Easier to implement with fewer resulting features.
+- Efficiency: Maintains the original number of features, making it more memory-efficient.
+- Suitable for Ordinal Data: Ideal for categorical variables with a meaningful order (e.g., education levels).
+
+#### Disadvantages of OrdinalEncoder
+
+- Implicit Ordinal Relationship: May introduce unintended ordinal relationships where none exist, potentially misleading the model.
+- Limited Use Cases: Not suitable for nominal data without inherent order, as it can degrade model performance.
+
+### Feature Scaling in Machine Learning (Skalierung)
+
+Feature scaling is a crucial preprocessing step in machine learning that involves transforming numerical features to a common scale without distorting differences in the ranges of values. This ensures that all features contribute equally to the model's performance, especially for algorithms sensitive to the scale of data, such as gradient descent-based methods and distance-based algorithms.
+
+#### Min-Max Scaling (`MinMaxScaler`)
+
+MinMaxScaler transforms features by scaling each feature to a given range, typically between 0 and 1. It preserves the relationships among the original data points by maintaining the distribution shape but compresses the range to the specified scale.
+
+Advantages:
+
+- Preserves the relationships and distribution of the data.
+- Simple and effective for scaling features to a specific range.
+
+Disadvantages:
+
+- Sensitive to outliers, which can skew the scaling parameters.
+
+#### Standardization (`StandardScaler`)
+
+StandardScaler standardizes features by removing the mean and scaling to unit variance. This transformation results in a distribution with a mean of 0 and a standard deviation of 1, making it suitable for algorithms that assume normally distributed data.
+
+Advantages:
+
+- Not bounded to a specific range, preserving useful information about the distribution.
+Less affected by outliers compared to Min-Max Scaling.
+
+Disadvantages:
+
+- Assumes that the data follows a Gaussian distribution, which may not always be the case.
+
+#### Normalization (Normalizer)
+
+Normalizer scales individual samples to have unit norm (e.g., L1 or L2 norm). This is particularly useful for text classification or clustering tasks where the direction of the data points matters more than their magnitude.
+
+Advantages:
+
+Ensures that each sample contributes equally to the analysis, regardless of their original magnitude.
+
+- Useful for algorithms that rely on distance calculations, such as k-nearest neighbors.
+
+Disadvantages:
+
+- Does not account for the distribution of features across the dataset.
+- Not suitable for all types of data, especially where feature scaling based on global statistics is needed.
+
+#### RobustScaler
+
+The RobustScaler from sklearn.preprocessing is a feature scaling tool designed to mitigate the impact of outliers in your dataset. Unlike other scalers that use mean and standard deviation, RobustScaler utilizes the median and the Interquartile Range (IQR) to scale features. This makes it particularly effective for datasets with significant outliers, ensuring that the scaling process is not unduly influenced by extreme values.
+
+Advantages:
+
+- Outlier Resistance: By using median and IQR, RobustScaler is less sensitive to outliers compared to MinMaxScaler and StandardScaler.
+- Effective Scaling: Ensures that the majority of the data points are scaled within a similar range, improving model performance.
+- Preserves Data Distribution: Maintains the shape of the original distribution without being skewed by extreme values.
+
+Disadvantages:
+
+- Not Ideal for All Data: If your dataset does not contain outliers, other scalers like StandardScaler might be more appropriate.
+- Less Intuitive Interpretation: Scaling based on median and IQR may be less straightforward to interpret compared to mean-based scaling.
+
+#### Comparison and Choosing the Right Scaler
+
+Min-Max Scaling is ideal when you need to bound your data within a specific range and when the algorithm is sensitive to the scale of the data.
+
+Standardization is preferred when the data follows a Gaussian distribution and when algorithms assume normally distributed data.
+
+Normalization is best suited for scenarios where the magnitude of individual samples is important, such as in text processing or when using distance-based algorithms.
+
+Be mindful of outliers, as they can significantly impact scaling, especially with Min-Max Scaling.
+
+It’s often beneficial to experiment with different scaling techniques to determine which one yields the best model performance.
+
+### FunctionTransformer
+
+The FunctionTransformer from sklearn.preprocessing is a versatile tool that allows you to apply custom functions to your data as part of a preprocessing pipeline. It enables the integration of any user-defined transformation function, making it easy to include bespoke data manipulation steps alongside standard preprocessing techniques. This flexibility is particularly useful when you need to perform unique transformations that are not covered by existing transformers in scikit-learn.
+
+- `fit()`: Typically does nothing and returns the transformer instance, maintaining interface consistency.
+- `transform()`: Applies the user-defined function to transform the data.
+- `fit_transform()`: Combines fitting and transforming, effectively performing the transformation in one step.
+
+### Understanding `np.c_[X_neu, neue_spalte]`
+
+The line of code X_neu = np.c_[X_neu, neue_spalte] uses NumPy's c_ object to concatenate arrays column-wise. Here’s what each part does:
+
+np.c_: A NumPy utility that facilitates column-wise stacking of arrays.
+X_neu: An existing NumPy array or matrix.
+neue_spalte: A new column (1D array) that you want to add to X_neu.
+Functionality:
+
+Concatenation: Combines X_neu and neue_spalte horizontally, adding neue_spalte as the last column of X_neu.
+Result: The variable X_neu is updated to include the new column, effectively expanding its dimensionality.
