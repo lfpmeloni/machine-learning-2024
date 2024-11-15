@@ -351,3 +351,113 @@ Functionality:
 
 Concatenation: Combines X_neu and neue_spalte horizontally, adding neue_spalte as the last column of X_neu.
 Result: The variable X_neu is updated to include the new column, effectively expanding its dimensionality.
+
+## Day 5
+
+### Data Preprocessing Pipeline Overview
+
+In machine learning workflows, data typically undergoes a series of preprocessing steps to prepare it for modeling. A common pipeline includes:
+
+Imputer (Imputer()): Handles missing values in the dataset by replacing them with statistical measures like mean, median, or mode.
+Encoder (Encoder()): Transforms categorical variables into numerical formats using techniques such as One-Hot Encoding or Ordinal Encoding.
+Scaler (Scaler()): Standardizes or normalizes numerical features to ensure they contribute equally to the model's performance.
+Predictions (Voraussagen): The processed data is then used to train machine learning models to make predictions.
+Evaluation (Bewerten): Assesses the model's performance using metrics like accuracy, precision, recall, or RMSE.
+
+X -> Imputer() -> Encoder() -> Scaler() -> Voraussagen -> Bewerten
+
+Scaler:
+MinMax --> [0,1]\
+Standard --> meistens [-1,1]
+Robust --> Nicht-Ausreißer[-1,+1]
+Maxabs --> [-1,+1]
+
+Encoder:
+OneHot --> viele neue Spalten
+Ordinal --> 1 neue Spalte, Stufenfolge
+
+### Training and Evaluation of Machine Learning Models
+
+In machine learning, training involves teaching a model to recognize patterns in data using the ``fit`` method, while prediction uses the learned patterns to make forecasts on new data with the ``predict`` method. Evaluation assesses the model's performance using metrics such as Mean Squared Error (MSE) or R². Understanding how different models operate and their strengths and weaknesses is crucial for selecting the right algorithm for your task.
+
+#### Linear Regression
+
+Linear Regression models the relationship between a dependent variable and one or more independent variables by fitting a linear equation to the observed data.
+
+- fit(): Calculates the best-fitting line by minimizing the sum of squared differences between observed and predicted values.
+- predict(): Uses the learned coefficients to estimate the dependent variable for new data points.
+
+Advantages:
+
+- Simple and easy to interpret.
+- Computationally efficient.
+- Works well when there is a linear relationship between features and the target.
+
+Disadvantages:
+
+- Assumes a linear relationship, which may not hold true for complex data.
+- Sensitive to outliers.
+- Can underperform when features are highly correlated (multicollinearity).
+
+#### Decision Tree Regressor
+
+Decision Tree Regressors split the data into subsets based on feature values, creating a tree-like model of decisions to predict the target variable.
+
+- fit(): Recursively splits the dataset based on feature values that result in the highest information gain or lowest variance.
+- predict(): Traverses the tree based on feature values of new data to arrive at a prediction.
+
+Advantages:
+
+- Handles both numerical and categorical data.
+- Captures non-linear relationships.
+- Easy to visualize and interpret.
+
+Disadvantages:
+
+- Prone to overfitting, especially with deep trees.
+- Can be unstable; small changes in data may lead to different trees.
+- Often requires pruning to improve generalization.
+
+#### Random Forest Regressor
+
+Random Forest Regressors are ensemble models that build multiple decision trees and aggregate their predictions to improve accuracy and control overfitting.
+
+- fit(): Trains multiple decision trees on random subsets of the data and features.
+- predict(): Averages the predictions from all individual trees to produce the final output.
+
+Advantages:
+
+- Reduces overfitting compared to individual decision trees.
+- Handles large datasets with higher dimensionality.
+- Provides feature importance insights.
+
+Disadvantages:
+
+- More complex and computationally intensive.
+- Less interpretable than single decision trees.
+- Can be slower to predict due to the ensemble of trees.
+
+#### Support Vector Machine (SVM) Regressor
+
+Support Vector Machines for regression (SVR) aim to find a function that deviates from the actual observed targets by a value no greater than a specified margin.
+
+- fit(): Determines the optimal hyperplane that fits within the margin of tolerance for all data points.
+- predict(): Uses the learned hyperplane to make predictions on new data.
+
+Advantages:
+
+- Effective in high-dimensional spaces.
+- Uses kernel trick to model non-linear relationships.
+- Robust to outliers with appropriate kernel choice.
+
+Disadvantages:
+
+- Requires careful tuning of parameters and kernel selection.
+- Computationally intensive for large datasets.
+- Less interpretable compared to linear models and decision trees.
+
+### Summary of Model Training
+
+- Training (fit): The process where the model learns from the training data by adjusting its parameters to minimize error.
+- Prediction (predict): Using the trained model to make predictions on new, unseen data.
+- Evaluation: Assessing model performance using metrics like MSE, R², MAE, etc., to determine how well the model generalizes to new data.
