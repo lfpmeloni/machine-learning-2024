@@ -1,0 +1,38 @@
+Herr Müller fährt entweder mit der Bahn oder mit dem Auto zur Arbeit.
+Er kommt manchmal unpünktlich.
+An 65 von 100 Tagen ist er mit dem Auto gefahren.
+
+
+Die Bahn ist in 4/13 aller Fälle pünktlich.
+Genauer gesagt:
+Wenn Herr Müller die Bahn nimmt, ist er in 4 /13 dieser Fälle pünktlich
+
+Das Auto kommt in 14/35 der Fälle pünktlich an.
+D.h. wenn Herr Müller mit dem Auto fährt, kommt er in 14/35 der Fälle pünktlich.
+
+
+Herr Müller kommt heute zu spät .Die Kollegin grinst und sagt" Na, bist du wieder mal mit der Bummel- Bahn gefahren?"
+Wie groß ist die Wahrscheinlichkeit, dass das tatsächlich so ist?
+
+===================
+
+Answer:
+
+Step 1: Understand Given Probabilities
+
+P(Auto) = 65/100
+P(Bahn) = 1-P(Auto) = 35/100 
+P(Late|Bahn) = 1 - 4/13 = 9/13
+P(Late|Auto) = 1 - 14/35 = 21/35 = 3/5
+
+Step 2: Calculate the Total Probability of Beign Late
+
+P(Late) = P(Late|Bahn) * P(Bahn) + P(Late|Auto) * P(Auto)
+= (9/13 * 7/20) + (3/5 * 13/20) = 63/260 + 39/100
+= 822/1300 = 411/650
+
+Step 3: Apply Bayes Theorem
+
+P(Train|Late) = (P(Late|Bahn) * P(Bahn)) / P(Late)
+=((9/13)*(7/20))/(411/650)
+=(63/260)/(411/650) = 105/274

@@ -1,0 +1,51 @@
+Die Aufgaben beziehen sich auf 
+https://jakevdp.github.io/PythonDataScienceHandbook/05.06-linear-regression.html
+Stufe 1
+a)(nur für Anfänger)
+Lies das Unterrichtsmaterial noch einmal durch.
+Vollziehe das einfache Regressionsbeispiel von vanderPlas nach .
+Tippe dazu den Code selbst (möglichst aus dem Gedächtnis) ein.(Nicht kopieren!)
+Schlage in der Dokumentation die moderneren Zufallsfunktionen nach.
+(Googlen mit numpy, random, "normal"oder "randn" bzw "integer" oder "randint"  bzw "rand") und verwende sie stattdessen.
+
+b)
+Schreibe den Code mit den PolynomialFeatures neu, aber ohne Pipeline
+
+c) Probiere aus, welche Potenz das beste Ergebnis liefert
+(Bilde eine Schleife zu den einzelnen Potenzen, 
+plotte das Resultat und/oder berechne den Score)
+
+Stufe 2 
+Lies den Abschnitt über die Gaussian Features. 
+Was haben Gaussian Features mit Normalverteilungen zu tun? Wann ist klar, wie hoch die "Berge" im plot sind?
+Was ist die Gemeinsamkeit zu den Polynomial Features?
+
+Stufe 3 
+Versuche Splines einzusetzen statt PolynomialFeatures
+sklearn.preprocessing.SplineTransformer
+
+Stufe 4
+a) vollziehe den Abschnitt zur Regulierung(Regularization) bei van der Plas nach und bereite eine kleine Präsentation vor
+b) vollziehe das Beispiel mit den Fahrrädern bei van der Plas nach
+
+===========================================
+
+Level 1
+a) (For Beginners Only)
+Reread the learning material.
+Recreate the simple regression example by VanderPlas. Type the code yourself (try to recall it from memory as much as possible, do not copy!).
+Look up the modern random functions in the documentation (search for numpy, random, normal, randn, integer or randint, rand) and use them instead.
+b) Rewrite the code using PolynomialFeatures, but without using a Pipeline.
+c) Experiment with which polynomial degree gives the best result:
+Create a loop to iterate through the polynomial degrees.
+Plot the results and/or compute the score.
+Level 2
+Read the section about Gaussian features.
+What do Gaussian features have to do with normal distributions? When is it clear how high the "peaks" in the plot are?
+What is the similarity to PolynomialFeatures?
+Level 3
+Try using splines instead of PolynomialFeatures:
+Use sklearn.preprocessing.SplineTransformer.
+Level 4
+a) Recreate the section on regularization by VanderPlas and prepare a short presentation.
+b) Recreate the bike example from VanderPlas.

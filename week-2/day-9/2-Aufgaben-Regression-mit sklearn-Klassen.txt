@@ -1,0 +1,46 @@
+Stufe 1
+a)
+Führe eine Regression mit dem Bostoner Housing Daten durch . Sie befinden sich in   im Aufgabenordner.
+Beide Dateien müssen mit np.loadtxt geladen werden.
+Importiere aus sklearn.model_selection die Funktion train_test_split.
+
+
+
+Vergleiche die Leistung der vordefinierte Klassen LinearRegression , Ridge und Lasso anhand des Scores.
+Ändert sich der Score, wenn man vorher Standardskalierung anwendet?
+Ändert er sich bei MinMax-Skalierung?
+
+b)
+Print von
+...alle Steigungsfaktoren
+...die Spaltennummer, wo der Steigungsfaktor absolut gesehen der größte ist und 	zusätzlich diesen Faktor
+...der Achsenabschnitt
+...der Score auf der Testmenge
+
+Auswertung
+Welche Klasse erzeugt den besten Score?
+Wie unterscheiden sich die Steigungsfaktoren nach der Anwendung der einzelnen Klassen?
+Ändert sich das Ergebnis, wenn man vorher Trainingsdaten und Testdaten skaliert?
+
+Stufe 2
+a)
+Erzeuge dir 1000 Daten, die in etwa einer Parabel mit Noise entsprechen.
+Teile in Trainings und Testdaten auf. (Zufallsauswahl ist nicht notwendig.Man könnte Slicing verwenden)
+Versuche eine normale lineare Regression.
+Teste die Güte der Voraussage durch Ausrechnen des Scores.
+Der Score ist eine Funktion, die in der vordefinierten Klasse steht.
+Plotte die vorausgesagte Linie und die Testdaten
+d)
+Vollziehe den Code bei Frochte nach und mache eine Klasse daraus mit fit und predict.
+Lassen sich Geschwindigkeitsunterschiede zwischen dieser Klasse und der Klasse aus scikit-learn feststellen?
+Füge zu den Daten eine Spalte hinzu, die das Quadrat der Daten enthält.
+(Dafür muss man nicht unbedingt PolynomialFeatures verwenden, man könnte auch hstack benutzen.)
+Was für Koeffizienten erzeugt die Regression?
+Teste die Güte der Voraussage durch Ausrechnen des Scores.
+Plotte die vorausgesagte Linie und die Testdaten
+
+Stufe3
+a)
+Importiere die Klasse LogisticRegression, wende sie auf die Daten zur Blasenentzündung an und vergleiche den Score mit den Klassen von NaiveBayes
+b)
+Tue das gleiche mit der Klasse RidgeClassifier. Welche hat den besseren Score? Welche ist schneller?
