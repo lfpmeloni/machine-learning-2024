@@ -33,4 +33,81 @@ What should we do if the assumptions for our regression model aren't met? Don't 
 
 ### Support Vector Machine (SVM)
 
-SVC, SVR
+#### Introduction to SVMs
+
+Concept: SVM aims to find the optimal hyperplane that maximizes the margin between two classes in a dataset.
+
+The hyperplane equation: 𝑔(𝑥)=𝑤0+𝑤1𝑥1+𝑤2𝑥2+…+𝑤𝑛𝑥𝑛
+
+The margin is the distance between the closest data points (support vectors) and the hyperplane​.
+
+Soft Margin for Non-Linearly Separable Classes:
+
+- Introduces slack variables 𝜉𝑖 to allow misclassifications for better generalization​.
+- Controlled by the 𝐶 parameter: Higher values prioritize correct classification, while lower values focus on maximizing the margin​​.
+
+Kernel Tricks
+
+To handle non-linear data, SVM uses kernel functions to transform data into higher-dimensional spaces​.
+
+Common kernels:
+
+- Linear: Used when data is linearly separable.
+- Polynomial: Can capture interactions of features up to a certain degree​.
+- Radial Basis Function (RBF): Adds flexibility to separate data that isn’t linearly separable in lower dimensions​.
+
+Using scikit-learn
+SVMs are implemented in scikit-learn as SVC (Support Vector Classifier) and LinearSVC for linear kernels​​.
+
+    from sklearn import svm
+    model = svm.SVC(kernel='rbf', C=1, gamma='auto')
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+
+Adjust parameters such as C, gamma (for RBF kernel), and degree (for polynomial kernel) to optimize performance.
+
+## Day 13
+
+### Neural Networks
+
+#### Introduction to Neural Networks
+
+Neural networks are inspired by biological neurons, designed to recognize patterns through layers of interconnected nodes (neurons).
+
+Perceptron: Simplest type of neural network, representing a single layer with a step activation function.
+Limitations: Cannot solve non-linear problems like XOR without transformation.
+
+Multi-Layer Perceptron (MLP): Overcomes limitations using multiple layers and non-linear activation functions.
+
+#### Key Concepts
+
+Activation Functions: Transform the input signals to introduce non-linearity.
+Examples: ReLU, sigmoid, tanh.
+
+Loss Functions: Measure the error between predictions and actual outcomes.
+Examples: Mean Squared Error (MSE), Cross-Entropy Loss.
+
+Optimization: Uses algorithms like Stochastic Gradient Descent (SGD) to minimize the loss.
+
+#### Training Neural Networks
+
+Steps:
+
+1. Initialize weights randomly.
+2. Forward propagation to compute outputs.
+3. Compute loss.
+4. Backpropagation to update weights using gradient descent.
+5. Iterate until convergence.
+
+Overfitting Solutions:
+
+- Regularization (L1/L2 norms).
+- Dropout (randomly deactivating neurons during training).
+- Data augmentation for larger training sets.
+
+#### Implementation in scikit-learn
+
+    from sklearn.neural_network import MLPClassifier
+    model = MLPClassifier(hidden_layer_sizes=(10, 5), max_iter=500)
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)

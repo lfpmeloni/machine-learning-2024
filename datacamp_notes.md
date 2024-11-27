@@ -752,3 +752,39 @@ Similar articles from same news writen differently can have diferent size in the
     current_article = df.loc['Dog bites man']
     similarities = df.dot(current_article)
     print(similarities.nlargest())
+
+## DataCamp Course 3 | Introduction to Deep Learning with PyTorch
+
+What is deep learning? Traditional machine learning relies on hand-crafted feature engineering. Deep learning on the other hand, is able to discover features from raw data, giving them that edge over traditional machine learning.
+
+Deep learning is beeign used for example in:
+
+- Language translation
+- Self-driving cars
+- Medical diagnostics
+- Chatbots
+
+Deep Learning is contained within what is known as Machine Learning and basically contains an Input, Hidden Layers and Outputs having one or many hidden layers. It was inspired on neurons creating neural networks in the human brain. These models usually require a large amount of data.
+
+In this course we are using PyTorch which is one of the most popular deep learning frameworks. It is used in industry as well among researchers. It has some common ground with the NumPy library.
+
+### Tensor
+
+Is similar to array which supports many mathematical operations and will form a cuilding block for our neural networks. Tensors can be created from Python lists by using the torch.tensor() class. They are similar to array and are the building blocks of neural networks.
+
+    import torch
+    lst = [[1, 2, 3], [4, 5, 6]]
+    tensor = torch.tensor(lst)
+
+PyTorch also supports tensor creation directly from NumPy arrays, using:
+
+    np_array = np.array(array)
+    np_tensor = torch.from_numpy(np_array)
+
+Tensors are multidimensional representing a collection of elements arranged in a grid with multiple dimensions. Usefull functions:
+
+    tensor.shape
+    tensor.dtype
+    device(type='cpu')
+
+By running addition and subtraction is important to make sure that the shapes are compatible otherwise we get an error.
