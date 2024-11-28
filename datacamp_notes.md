@@ -785,6 +785,13 @@ Tensors are multidimensional representing a collection of elements arranged in a
 
     tensor.shape
     tensor.dtype
-    device(type='cpu')
+    device(type='cpu') # Deep learning often requires a GPU that offers parallel computing with faster training time and better performance
 
 By running addition and subtraction is important to make sure that the shapes are compatible otherwise we get an error.
+
+    a = torch.tensor([[1,1],[2,2]])
+    b = torch.tensor([[2,2],[3,3]])
+    a + b -> tensor([[3,3],[5,5]])
+    a * b -> tensor([[2,2],[6,6]])
+
+There are other common operations such as: `transposition`, `matrix multiplication` and `concatenation`. Most operations available on NumPy array operations can also be performed on PyTorch tensors.

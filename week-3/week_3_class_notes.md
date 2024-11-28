@@ -111,3 +111,99 @@ Overfitting Solutions:
     model = MLPClassifier(hidden_layer_sizes=(10, 5), max_iter=500)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
+
+## Day 14
+
+### Sample code from the teacher
+
+    Normale Daten
+    nn = MLPRegressor(hidden_layer_sizes = (3,4),
+    activation = "relu",
+    solver = "adam",
+    max_iter=2_000,
+    random_state = 42)
+    Große Daten
+    nn = MLPRegressor(hidden_layer_sizes = (300,300,200,2),
+    activation = "tanh",
+    solver = "sgd",
+    learning_rate= "invscaling",
+    batch_size =1000,
+    max_iter=2_0000,
+    random_state = 42,
+    warm_start = True,
+    early_stopping = True)
+
+### PCA - Principal Component Analysis
+
+#### Introduction to PCA
+
+PCA, or Principal Component Analysis, is a method for dimensionality reduction in data preprocessing.
+Goal: Transform a high-dimensional feature space into a smaller one while retaining as much variance (information) as possible​​.
+
+#### Key Concepts for PCA
+
+(1) Projection to a Lower Dimensional Space:
+
+- PCA reduces dimensions by projecting data points onto a new set of orthogonal axes (principal components).
+- The first principal component captures the highest variance, followed by the second, and so on​​.
+
+(2) Mathematical Foundation:
+
+- PCA finds the eigenvalues and eigenvectors of the covariance matrix of the dataset.
+- The eigenvectors define the direction of the new feature axes, and eigenvalues measure the variance along these axes​.
+
+(3) Linear Transformation:
+
+- PCA constructs a projection matrix 𝑊 from the top 𝑘 eigenvectors. The data is transformed as 𝑍 = 𝑊^𝑇𝑋, where 𝑋 is the original dataset​.
+
+(4) Standardization:
+
+- Standardizing the dataset (mean=0, variance=1) is essential to ensure fair treatment of all features​.
+
+#### When to Use PCA
+
+- Ideal for datasets with linearly correlated features.
+- Useful in preprocessing to reduce overfitting in machine learning models​.
+- Ineffective if features are non-linearly dependent—consider autoencoders or t-SNE for such cases​.
+
+#### Steps in PCA
+
+(1) Standardize the Data:
+
+- Center the data around zero mean and unit variance.
+
+    from sklearn.preprocessing import StandardScaler
+    X_scaled = StandardScaler().fit_transform(X)
+
+(2) Compute the Covariance Matrix:
+
+- Reflects the relationships between different dimensions.
+
+(3) Calculate Eigenvalues and Eigenvectors:
+
+- Eigenvalues define the amount of variance captured by each principal component.
+- Eigenvectors determine the direction of the new axes.
+
+(4) Select Principal Components:
+
+- Choose the top 𝑘 components based on eigenvalues.
+
+(5) Project the Data:
+
+- Transform the data onto the selected principal components.
+
+#### Using PCA with scikit-learn
+
+    from sklearn.decomposition import PCA
+
+    # Fit PCA model with 2 components
+    pca = PCA(n_components=2)
+    X_pca = pca.fit_transform(X_scaled)
+
+    # Explained variance ratio
+    print(pca.explained_variance_ratio_)
+
+Key Parameters:
+
+- n_components: Number of dimensions to retain
+- explained_variance_ratio_: Shows how much variance each principal component captures.
