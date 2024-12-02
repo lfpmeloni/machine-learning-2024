@@ -207,3 +207,76 @@ Key Parameters:
 
 - n_components: Number of dimensions to retain
 - explained_variance_ratio_: Shows how much variance each principal component captures.
+
+## Day 15
+
+### Clustering-Verfahren / Clustering Methods
+
+#### Introduction to Clustering
+
+Definition: Clustering is an unsupervised learning technique that divides a set of objects into groups (clusters) based on their similarities​.
+
+Goals:
+
+- Maximize similarity within clusters.
+- Minimize similarity between clusters​​.
+
+Algorithms are categorized by their approach to grouping data​​:
+
+- Gradient-based
+- Density-based (e.g., DBSCAN)
+- Point-density-based
+- Attraction-based
+- Competitive
+- Hierarchical (e.g., Agglomerative, Divisive)
+- Iterative (e.g., k-means, k-medoids)
+- Exemplar-based
+- Exchange-based
+- Stochastic
+- Gaussian Mixture Models (GMM)
+
+#### Popular Clustering Techniques
+
+##### k-Means and k-Medoids
+
+Partitional method dividing data into 𝑘 clusters iteratively. Measures similarity using centroid distances​.
+
+    from sklearn.cluster import KMeans
+    model = KMeans(n_clusters=3, random_state=42)
+    model.fit(data)
+    labels = model.predict(data)
+
+##### Density-Based Spatial Clustering of Applications with Noise (DBSCAN)
+
+Groups points based on high-density regions​​.
+Requires parameters
+
+- ε: Radius for neighborhood search.
+- MinPts: Minimum points in a neighborhood to form a cluster.
+
+##### Hierarchical Clustering
+
+Creates a dendrogram representing nested clusters​​.
+Approaches:
+Agglomerative: Starts with individual points, merges clusters iteratively.
+Divisive: Starts with one cluster, splits iteratively.
+Common Linkage Methods:
+Single Linkage: Minimum distance between points in clusters (prone to chain formation).
+Complete Linkage: Maximum distance between points in clusters.
+Average Linkage: Average distance between points in clusters​​.
+
+#### Evaluation Metrics
+
+Silhouette Score:
+Measures how similar a data point is to its cluster compared to other clusters.
+Score range: −1 (incorrect clustering) to +1 (appropriate clustering).
+Inertia: Measures within-cluster sum of squares; used for k-means​.
+
+#### Practical Considerations
+
+Always preprocess data (e.g., scaling, normalization) to ensure fair clustering​.
+Selection of clustering methods depends on:
+
+- Data structure and distribution.
+- Interpretability requirements.
+- Computational resources​​.
